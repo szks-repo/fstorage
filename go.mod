@@ -1,4 +1,4 @@
-module storageclient
+module githubcom/szks-repo/fstorage
 
 go 1.18
 
