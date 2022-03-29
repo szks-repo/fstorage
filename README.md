@@ -14,7 +14,7 @@ import (
 )
 
 func main() {
-	sc, _ := fstorage2.New("/path/to/storage")
+	sc, _ := fstorage.New("/path/to/storage")
 	if err := sc.SaveAll("test/test1.txt", strings.NewReader("test"), nil); err != nil {
 		log.Fatal(err)
 	}
