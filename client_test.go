@@ -2,9 +2,9 @@ package fstorage
 
 import (
 	"fmt"
+	"github.com/szks-repo/fstorage/test/testutil"
 	"log"
 	"os"
-	"storageclient/test/testutil"
 	"strings"
 	"testing"
 )

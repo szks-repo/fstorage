@@ -3,11 +3,11 @@ package fstorage
 import (
 	"bytes"
 	"errors"
+	"github.com/szks-repo/fstorage/option/diropt"
+	"github.com/szks-repo/fstorage/option/fileopt"
 	"io"
 	"os"
 	"path/filepath"
-	"storageclient/option/diropt"
-	"storageclient/option/fileopt"
 )
 
 func (s *StorageClient) Save(filename string, r io.Reader, opt *fileopt.SaveFileOption) error {

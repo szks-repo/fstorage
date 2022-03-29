@@ -2,8 +2,8 @@ package fstorage
 
 import (
 	"errors"
+	"github.com/szks-repo/fstorage/option/diropt"
 	"os"
-	"storageclient/option/diropt"
 )
 
 func (s *StorageClient) Mkdir(dirname string, mod os.FileMode, opt *diropt.MkdirOption) error {
