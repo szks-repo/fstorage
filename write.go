@@ -43,14 +43,11 @@ func (s *StorageClient) Save(filename string, r io.Reader, opt *fileopt.SaveFile
 		} else if opt.OnConflict == fileopt.NoAction {
 			return nil
 		}
-
 	} else if errors.Is(err, os.ErrNotExist) {
-
 		wc, err = os.Create(filename)
 		if err != nil {
 			return err
 		}
-
 	} else if err != nil {
 		return err
 	}
