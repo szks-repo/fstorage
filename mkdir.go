@@ -6,8 +6,6 @@ import (
 	"storageclient/option/diropt"
 )
 
-var ErrDirectoryAlreadyExist = errors.New("error directory already exist")
-
 func (s *StorageClient) Mkdir(dirname string, mod os.FileMode, opt *diropt.MkdirOption) error {
 	return s.mkdir(os.Mkdir, dirname, mod, opt)
 }
@@ -29,7 +27,7 @@ func (s *StorageClient) mkdir(fn func(string, os.FileMode) error, dirname string
 		case diropt.NoAction:
 			return nil
 		case diropt.ReturnErr:
-			return ErrDirectoryAlreadyExist
+			return os.ErrExist
 		case diropt.Remove:
 			if err := s.Remove(dirname); err != nil {
 				return err

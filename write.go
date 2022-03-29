@@ -10,8 +10,6 @@ import (
 	"storageclient/option/fileopt"
 )
 
-var ErrFileAlreadyExist = errors.New("error file already exist")
-
 func (s *StorageClient) Save(filename string, r io.Reader, opt *fileopt.SaveFileOption) error {
 	if opt == nil {
 		opt = &fileopt.SaveFileOption{OnConflict: fileopt.Overwrite}
@@ -41,7 +39,7 @@ func (s *StorageClient) Save(filename string, r io.Reader, opt *fileopt.SaveFile
 			}
 
 		} else if opt.OnConflict == fileopt.ReturnErr {
-			return ErrFileAlreadyExist
+			return os.ErrExist
 		} else if opt.OnConflict == fileopt.NoAction {
 			return nil
 		}

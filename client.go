@@ -2,7 +2,6 @@ package fstorage
 
 import (
 	"errors"
-	"fmt"
 	"os"
 	"path/filepath"
 	"strings"
@@ -14,7 +13,7 @@ type StorageClient struct {
 
 func New(storagePath string) (*StorageClient, error) {
 	if !filepath.IsAbs(storagePath) {
-		return nil, errors.New("absolute path required")
+		return nil, errors.New("storagePath must be absolute path")
 	}
 	storagePath = strings.TrimRight(storagePath, "/")
 	info, err := os.Stat(storagePath)
@@ -42,9 +41,6 @@ func (s *StorageClient) abs(filename string) string {
 	//fmt.Println(filepath.Match(s.basePath+"/*", filename))
 	if strings.HasPrefix(filename, s.basePath) {
 		return filename
-	} else {
-		fmt.Println("filename:", filename)
-		fmt.Println("s.basePa:", s.basePath)
 	}
 	return filepath.Join(s.basePath, strings.TrimPrefix(filename, "/"))
 }
