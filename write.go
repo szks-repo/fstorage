@@ -55,7 +55,7 @@ func (s *StorageClient) Save(filename string, r io.Reader, opt *fileopt.SaveFile
 		return err
 	}
 
-	_, err = io.Copy(buf, r.(io.Reader))
+	_, err = io.Copy(buf, r)
 	if _, seekable := r.(io.ReadSeeker); seekable {
 		_, _ = r.(io.ReadSeeker).Seek(0, 0)
 	}
