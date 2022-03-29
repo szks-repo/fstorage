@@ -19,11 +19,11 @@ func main() {
 		log.Fatal(err)
 	}
 
-	f, err := sc.Get("/test/test1.txt")
+	obj, err := sc.Get("test/test1.txt")
 	if err != nil {
 		log.Fatal(err)
 	}
-	defer f.Close()
-	fmt.Println(f.String())
+	defer obj.Close()
+	fmt.Println(obj.String())
 }
 ```
